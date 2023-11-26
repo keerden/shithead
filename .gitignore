@@ -1,0 +1,15 @@
+*
+!app/
+!app/**
+!public/
+!public/**
+!shared/
+!shared/**
+!.dockerignore
+!.gitignore
+!docker_run.sh
+!dockerfile
+!index.js
+!LICENCE
+!package-lock.json
+!package.json

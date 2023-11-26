@@ -1,0 +1,7 @@
+*
+!app/
+!public/
+!shared
+!package.json
+!package-lock.json
+!index.js

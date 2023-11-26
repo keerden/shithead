@@ -1,28 +1,37 @@
 'use strict';
 
-exports.response = function(code, data, message = null){
-    let result = {statusCode: code};
-    if(data !== null){
-        result.data = data;
+exports.response = function(req, res, statusCode, data, message = null){
+    if(data === null){
+        data = {message: message};
     }
-    if(message !== null){
-        result.message = message;
-    }
-    return result;
+
+    res.status(statusCode).json(data);
 }
 
-exports.ok = function(data = null){
-    return exports.response(200, data);
+exports.ok = function(req, res, data = null){
+    return exports.response(req, res, 200, data);
 }
 
-exports.badRequest = function(msg = "Bad Request"){
-    return exports.response(400, null, msg);
+exports.badRequest = function(req, res){
+    return exports.response(req, res, 400, null, "Bad Request");
 }
 
-exports.forbidden = function(msg = "Forbidden"){
-    return exports.response(403, null, msg);
+exports.forbidden = function(req, res){
+    return exports.response(req, res, 403, null, "Forbidden");
 }
 
-exports.serverError = function() {
-    return exports.response(500, null, "Internal server error");
+exports.serverError = function(req, res) {
+    return exports.response(req, res, 500, null, "Internal server error");
+}
+
+exports.methodNotAllowed = function(req, res) {
+    return exports.response(req, res, 405, null, "Method not allowed");
+}
+
+exports.endpointNotFound = function(req, res) {
+    return exports.response(req, res, 404, null, "Endpoint not found");
+}
+
+exports.running = function(req, res){
+    return exports.ok(req, res, {status: "running"});
 }
