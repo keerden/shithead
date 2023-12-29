@@ -46,6 +46,17 @@ class ShitheadController {
         } 
     }
 
+    setGameStatus(req, res) {
+        let gameId = req.params.gameId;
+
+        let status = GAME_SERVICE.setGameStatus(gameId, req.body);
+        if(status){
+            RESPONSES.ok(req, res, status);
+        } else {
+            RESPONSES.badRequest(req,res);
+        } 
+    }
+
     startGame(req, res) {
         let gameId = req.params.gameId;
 

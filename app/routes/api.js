@@ -54,6 +54,7 @@ function initRoutes(app, baseUrl) {
 
     app.route(baseUrl + '/game/:gameId')
         .get(SHITHEAD_CONTROLLER.getGameStatus.bind(SHITHEAD_CONTROLLER))
+        .put(SHITHEAD_CONTROLLER.setGameStatus.bind(SHITHEAD_CONTROLLER))
         .all(RESPONSES.methodNotAllowed.bind(RESPONSES));
  
     app.route(baseUrl + '/game/:gameId/start')

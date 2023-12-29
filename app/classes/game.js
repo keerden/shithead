@@ -336,6 +336,32 @@ class Game {
         };
     }
 
+    setState(state){
+        this.#fullDeck = new Deck(state.fullDeck);
+        this.#playedStack = new Deck(state.playedStack);
+        this.#drawStack = new Deck(state.drawStack);
+        this.#burnStack = new Deck(state.burnStack);
+        this.#turn = state.turn;
+        this.#gameState = state.gameState;
+        this.#directionClockwise = state.directionClockwise;
+        this.#players = [];
+
+            for(let i = 0; i < state.players.length; i++){
+                let player = new Player(state.players[i].name);
+                if(state.players[i].handCards !== null){
+                    player.handCards = new Deck(state.players[i].handCards);
+                }
+                if(state.players[i].openCards !== null){
+                    player.openCards = new Deck(state.players[i].openCards);
+                }
+                if(state.players[i].closedCards !== null){
+                    player.closedCards = new Deck(state.players[i].closedCards);
+                }              
+                this.#players.push(player);
+            }
+        
+    }
+
     #nextTurn() {
         this.#turn += this.#directionClockwise ? 1 : -1;
 

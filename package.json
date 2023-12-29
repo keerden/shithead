@@ -4,6 +4,7 @@
   "description": "Shithead game on javascript",
   "main": "server.js",
   "scripts": {
+    "debug": "node --inspect=0.0.0.0:9229 index.js",
     "start": "node index.js"
   },
   "author": "Koos Eerden",

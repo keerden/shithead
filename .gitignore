@@ -7,6 +7,7 @@
 !shared/**
 !.dockerignore
 !.gitignore
+!docker_debug.sh
 !docker_run.sh
 !dockerfile
 !index.js

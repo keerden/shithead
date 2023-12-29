@@ -39,10 +39,6 @@ class Deck {
 
     concat(cards) {
         if(cards instanceof Deck){
-
-console.log("set" , this.#set )
-console.log("codes" , cards.getAllCodes() )
-
             this.#set = this.#set.concat(cards.getAllCodes());
             return;
         }
